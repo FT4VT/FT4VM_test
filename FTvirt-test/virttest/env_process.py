@@ -87,6 +87,12 @@ def preprocess_vm(test, params, env, name):
     vm_type = params.get('vm_type')
     target = params.get('target')
     if not vm:
+
+        #ting add
+        sys.stdout.restore()
+        print "can't find VM",name,"\n"
+        #end add
+
         vm = env.create_vm(vm_type, target, name, params, test.bindir)
 
     remove_vm = False
@@ -106,9 +112,16 @@ def preprocess_vm(test, params, env, name):
         start_vm = True
     elif params.get("start_vm") == "yes":
         # need to deal with libvirt VM differently than qemu
+        #ting add
+        """
         if vm_type == 'libvirt' or vm_type == 'v2v':
             if not vm.is_alive():
                 start_vm = True
+        """
+        if vm_type == 'libvirt' or vm_type == 'v2v' or vm_type == 'FT_kvm':
+            if not vm.is_alive():
+                start_vm = True
+        #end add
         else:
             if not vm.is_alive():
                 start_vm = True
@@ -122,6 +135,11 @@ def preprocess_vm(test, params, env, name):
         elif vm_type == "v2v":
             vm.params = params
             vm.start()
+        #ting add
+        elif vm_type == "FT_kvm":
+            vm.params =params
+            vm.start()
+        #end add
         else:
             # Start the VM (or restart it if it's already up)
             vm.create(name, params, test.bindir,

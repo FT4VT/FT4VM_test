@@ -256,7 +256,14 @@ class Test(object):
                 # Postprocess
                 try:
                     try:
+                         #ting add
+                        """
+                        #origin code
                         env_process.postprocess(self, params, env)
+                        """
+                        if params.get("vm_type") != "FT_kvm":
+                            env_process.postprocess(self, params, env)
+                        #end add
                     except Exception, e:
                         if test_passed:
                             raise

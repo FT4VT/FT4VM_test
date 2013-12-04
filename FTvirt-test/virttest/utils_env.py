@@ -3,6 +3,9 @@ import UserDict
 import os
 import logging
 import virt_vm
+#ting add
+import sys
+#end add
 
 ENV_VERSION = 1
 
@@ -39,6 +42,10 @@ class Env(UserDict.IterableUserDict):
             try:
                 if os.path.isfile(filename):
                     f = open(filename, "r")
+                    #ting test
+                    sys.stdout.restore()
+                    print "filename : ",filename,"\n\n"
+                    #test end
                     env = cPickle.load(f)
                     f.close()
                     if env.get("version", 0) >= version:
@@ -49,6 +56,10 @@ class Env(UserDict.IterableUserDict):
                         self.data = empty
                 else:
                     # No previous env file found, proceed...
+                    #ting test
+                    sys.stdout.restore()
+                    print "no env file\n"
+                    #end test
                     logging.warn("Creating new, empty env file")
                     self.data = empty
             # Almost any exception can be raised during unpickling, so let's

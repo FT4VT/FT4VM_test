@@ -22,8 +22,8 @@ def run_boot(test, params, env):
 
     timeout = float(params.get("login_timeout", 240))
     #ting test
-    sys.stdout.restore()
-    print "\n\nparams :    ",params,"\n\n\n"
+    #sys.stdout.restore()
+    #print "\n\nparams :    ",params,"\n\n\n"
     #end test
 
     vms = env.get_all_vms()
@@ -32,6 +32,10 @@ def run_boot(test, params, env):
     print "vms : ",vms,"\n\n\n"
     #end test
     for vm in vms:
+        #ting test
+        sys.stdout.restore()
+        print "vm : ",vm,"\n"
+        #end test
         error.context("Try to log into guest '%s'." % vm.name, logging.info)
         session = vm.wait_for_login(timeout=timeout)
         print "after wait\n\n"

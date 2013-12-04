@@ -737,11 +737,11 @@ class VirtTestApp(object):
             #print "self.cartesian_parser :    ",dir(self.cartesian_parser),"\n"
             #end test
             #ting add temp
-            if self.options.type != 'FT_kvm':
+            #if self.options.type != 'FT_kvm':
             #end add temp
-              ok = standalone_test.run_tests(self.cartesian_parser, self.options)
+            ok = standalone_test.run_tests(self.cartesian_parser, self.options)
             #ting add temp
-            if self.options.type == 'FT_kvm':
+            if True == False:#self.options.type == 'FT_kvm':
               from virttest import ft_vm
               from virttest import utils_params
               #ting test

@@ -1019,10 +1019,11 @@ def start(name, **dargs):
     :param dargs: standardized virsh function API keywords
     :return: CmdResult object.
     """
+    print "start in\n"
     return command("start %s" % name, **dargs)
 
 #ting add
-def FTstart(name, **drags):
+def FTstart(name, **dargs):
     """
     Execute FTstart command 
 
@@ -1031,6 +1032,7 @@ def FTstart(name, **drags):
     :return: CmdResult object.
     class CmdResult define in ($autotest_path)/client/shared/base_utils.py
     """
+    print "FTstart in\n"
     return command("FTstart %s" % name, **dargs)
 #end add
 
@@ -2519,3 +2521,5 @@ def node_memtune(shm_pages_to_scan=None, shm_sleep_millisecs=None,
         cmd += " --%s" % options
 
     return command(cmd, **dargs)
+
+

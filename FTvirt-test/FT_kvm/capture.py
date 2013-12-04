@@ -68,17 +68,21 @@ class Capture(object):
     self.file = Capture_file()
 
   def main(self):
-    self.file.save()
+    #self.file.save()
     #self.file.search_file()
     print os.environ['VIRTTEST_PATH'],"\n"
     print virttest_dir+"\n"
     print virsh.domstate('test').stdout.strip()
+    #virsh.qemu_monitor_command("test", "sendkey 1")
+    virsh.qemu_monitor_command("test", "mouse_move 10 1000")
+    virsh.qemu_monitor_command("test", "\'mouse_button 1 1000 4000 0\'")
+    #virsh.qemu_monitor_command("test", "sendkey 2")
 
     
 
 
 if __name__ == '__main__':
-  app = Capture('test','')
+  app = Capture("test",'')
   app.main()
   #print virsh.domstate('test').stdout.strip()
   #vm = ft_vm.VM('test')

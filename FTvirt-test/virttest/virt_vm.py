@@ -543,6 +543,11 @@ class BaseVM(object):
             if target == 'ovirt':
                 import ovirt
                 return ovirt.VMManager
+        #ting add
+        if vm_type == 'FT_kvm':
+            import ft_vm
+            return ft_vm.VM
+        #end add
 
     #
     # Public API - could be reimplemented with virt specific code
