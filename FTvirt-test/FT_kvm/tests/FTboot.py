@@ -18,11 +18,9 @@ def run_FTboot(test, params, env):
   :param env: Dictionary with test environment.
   """
   vms = env.get_all_vms()
-  timeout = 90
+  timeout = params["running_timeout"]
   for vm in vms:
     #print "FTboot in \n"
-    result = vm.wait_for_running(timeout)
-    if not result:
-      raise Exception
+    result = vm.wait_for_running(int(timeout)
   return result
 

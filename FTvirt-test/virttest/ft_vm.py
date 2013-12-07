@@ -27,6 +27,7 @@ class VM(virt_vm.BaseVM):
     self.name = name
     self.connect_uri = "qemu:///system"
     self.sec_vm_ip = params["sec_vm_ip"]
+    self.port = params["vnc_link_port"]
     self.sec_vm_con_uri = "qemu+tcp://"+self.sec_vm_ip+"/system"
     super(VM, self).__init__(name, params)
     
@@ -64,10 +65,24 @@ class VM(virt_vm.BaseVM):
     Execute FTstart
     In order to not been locked by FTstart command
     """
-    sys.stdout.restore()
-    print "\n\nthread in\n\n"
+    #sys.stdout.restore()
+    #print "\n\nthread in\n\n"
     #virsh.start(self.name)
     virsh.FTstart(self.name, uri=self.connect_uri)
+
+  def shutdown(self):
+    """
+    if primary VM or secondary VM haven't shutoff,
+    shutdown this VM
+    """
+    print "shutdown in\n"
+    if not is_dead():
+      print "primary in"
+      visrh.shutdown(self.name)
+    if not is_dead('s'):
+      print self.sec_vm_con_uri
+      virsh.shutdown(self.name, uri=self.sec_vm_con_uri)
+
 
   def wait_for_running(self, timeout):
     """
@@ -87,7 +102,7 @@ class VM(virt_vm.BaseVM):
         time.sleep(2)
     if self.is_alive() and self.is_alive('s'):
       return True
-    return False
+    raise Exception("FT_vm start fail")
 
 
 
