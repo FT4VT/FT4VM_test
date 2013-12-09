@@ -43,8 +43,8 @@ class Env(UserDict.IterableUserDict):
                 if os.path.isfile(filename):
                     f = open(filename, "r")
                     #ting test
-                    sys.stdout.restore()
-                    print "filename : ",filename,"\n\n"
+                    #sys.stdout.restore()
+                    #print "filename : ",filename,"\n\n"
                     #test end
                     env = cPickle.load(f)
                     f.close()
@@ -57,8 +57,8 @@ class Env(UserDict.IterableUserDict):
                 else:
                     # No previous env file found, proceed...
                     #ting test
-                    sys.stdout.restore()
-                    print "no env file\n"
+                    #sys.stdout.restore()
+                    #print "no env file\n"
                     #end test
                     logging.warn("Creating new, empty env file")
                     self.data = empty

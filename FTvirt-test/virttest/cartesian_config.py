@@ -1391,7 +1391,7 @@ class Parser(object):
 
     def _parse(self, lexer, node=None, prev_indent=-1):
         #ting test
-        sys.stdout.restore()
+        #sys.stdout.restore()
         #if lexer.reader._lines[0] == ('only FTboot', 0, 1):
         #    print "lexer.reader._lines[0]  : ",lexer.reader._lines[0],"\n\n"
             #print "_parser self.get_dicts().next()  : ",self.get_dicts().next(),"\n\n"
@@ -1686,11 +1686,11 @@ class Parser(object):
                         node.content += [(lexer.filename, lexer.linenum,
                                           OnlyFilter(lfilter, lexer.line))]
                         #ting test
-                        sys.stdout.restore()
+                        #sys.stdout.restore()
                         #print "after add in node.content :  ",node.content,"\n\n"
-                        if lexer.reader._lines[0] == ('only FTboot', 0, 1):
-                            print "lexer.reader._lines[0]  : ",lexer.reader._lines[0],"\n\n"
-                            print "_parser in LOnly self.get_dicts().next()  : ",self.get_dicts().next(),"\n\n"
+                        #if lexer.reader._lines[0] == ('only FTboot', 0, 1):
+                        #    print "lexer.reader._lines[0]  : ",lexer.reader._lines[0],"\n\n"
+                        #    print "_parser in LOnly self.get_dicts().next()  : ",self.get_dicts().next(),"\n\n"
                         #end test
                     else:  # LNo
                         node.content += [(lexer.filename, lexer.linenum,
@@ -1904,10 +1904,10 @@ class Parser(object):
         if (not process_content(node.content, new_internal_filters) or not
                 process_content(content, new_external_filters)):
             #ting test
-            sys.stdout .restore()
+            #sys.stdout .restore()
             #print "node :     ",node,"\n\n\n"
-            if len(self.only_filters) == 3  and  self.only_filters[2] ==  'only FTboot':
-                print "faillllllllll\n\n"
+            #if len(self.only_filters) == 3  and  self.only_filters[2] ==  'only FTboot':
+            #    print "faillllllllll\n\n"
             #end test
 
             add_failed_case()

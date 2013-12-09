@@ -99,7 +99,7 @@ def check_input_reject(port):
   """
   check input to port is been rejected.
   """
-  print "input in\n"
+  #print "input in\n"
   f = open_file(temp_file_n)
   if read_line(f) ==  iptb_input_t:
     line = read_line(f)
@@ -119,7 +119,7 @@ def check_dnat(ip, port):
   """
   check port is been redirected to ip:port
   """
-  print "dnat in\n"
+  #print "dnat in\n"
   dnat_line = "DNAT       tcp  --  anywhere             anywhere             tcp dpt:"+port+" to:"+ip+":"+port+"\n"
   f = open_file(temp_file1_n)
   if read_line(f) == iptb_prerouting_t:
@@ -138,7 +138,7 @@ def check_masq():
   """
   check MASQUERADE is anywhere
   """
-  print "masq in\n"
+  #print "masq in\n"
   masq_line = "MASQUERADE  all  --  anywhere             anywhere            \n"
   f = open_file(temp_file1_n)
   line = read_line(f)
@@ -146,7 +146,7 @@ def check_masq():
     if line == masq_line:
       f.close()
       return True
-    print "line : ",line,"\n"
+    #print "line : ",line,"\n"
     line = read_line(f)
   f.close()
   raise Exception("Haven't do MASQUERADE")
@@ -182,9 +182,10 @@ def run_net_redirect(test, params, env):
     time.sleep(1)
 
     check_net_redirect(vm.sec_vm_ip,vm.port)
-    #delete_file(temp_file_n)
-    #delete_file(temp_file1_n)
-    #vm.shutdown()
+    delete_file(temp_file_n)
+    delete_file(temp_file1_n)
+    time.sleep(2)
+    vm.destroy()
 
 
 #test

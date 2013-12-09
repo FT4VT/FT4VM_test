@@ -564,8 +564,8 @@ class VirtTestApp(object):
 
     def _process_tests(self):
         #ting test
-        sys.stdout.restore()
-        print "self.cartesian_parser.get_dicts().next() in process_tests :   ",self.cartesian_parser.get_dicts().next(),"\n\n"
+        #sys.stdout.restore()
+        #print "self.cartesian_parser.get_dicts().next() in process_tests :   ",self.cartesian_parser.get_dicts().next(),"\n\n"
         #end test
         if not self.options.config:
             if self.options.type:
@@ -578,10 +578,10 @@ class VirtTestApp(object):
                             tests.append(LIBVIRT_REMOVE)
                     self.cartesian_parser.only_filter(", ".join(tests))
                     #ting test
-                    sys.stdout.restore()
+                    #sys.stdout.restore()
                     #print "after add tests to self.cartesian_parser :  ",dir(self.cartesian_parser),"\n\n\n"
                     #print " self.cartesian_parser.only_filters :  ",self.cartesian_parser.only_filters,"\n\n\n"
-                    print "self.cartesian_parser.get_dicts().next() mid2 in process_tests :   ",self.cartesian_parser.get_dicts().next(),"\n\n"
+                    #print "self.cartesian_parser.get_dicts().next() mid2 in process_tests :   ",self.cartesian_parser.get_dicts().next(),"\n\n"
                     #print "tests :   ",tests,"\n\n\n"
                     #end test
                 else:
@@ -596,8 +596,8 @@ class VirtTestApp(object):
         else:
             logging.info("Config provided, ignoring --tests option")
         #ting test
-        sys.stdout.restore()
-        print "self.cartesian_parser.get_dicts().next() before leave process_tests :   ",self.cartesian_parser.get_dicts().next(),"\n\n"
+        #sys.stdout.restore()
+        #print "self.cartesian_parser.get_dicts().next() before leave process_tests :   ",self.cartesian_parser.get_dicts().next(),"\n\n"
         #end test
 
     def _process_restart_vm(self):
@@ -690,14 +690,14 @@ class VirtTestApp(object):
             #print "none\n"
 
         #ting test
-        sys.stdout.restore()
-        print "cfg :   ",cfg,"\n\n"
+        #sys.stdout.restore()
+        #print "cfg :   ",cfg,"\n\n"
         #end test
 
         #parser config file 
         self.cartesian_parser.parse_file(cfg)
         #ting test
-        print "self.cartesian_parser.get_dicts().next() after parser file :   ",self.cartesian_parser.get_dicts().next(),"\n\n"
+        #print "self.cartesian_parser.get_dicts().next() after parser file :   ",self.cartesian_parser.get_dicts().next(),"\n\n"
         #end test
         if self.options.type != 'lvsb':
             self._process_general_options()
@@ -732,37 +732,7 @@ class VirtTestApp(object):
             standalone_test.configure_console_logging()
             self._process_options()
             standalone_test.bootstrap_tests(self.options)
-            #ting test
-            #sys.stdout.restore()
-            #print "self.cartesian_parser :    ",dir(self.cartesian_parser),"\n"
-            #end test
-            #ting add temp
-            #if self.options.type != 'FT_kvm':
-            #end add temp
             ok = standalone_test.run_tests(self.cartesian_parser, self.options)
-            #ting add temp
-            if True == False:#self.options.type == 'FT_kvm':
-              from virttest import ft_vm
-              from virttest import utils_params
-              #ting test
-              sys.stdout.restore()
-              print "FT_kvm in"
-              #end test
-              #temp_dicts = self.cartesian_parser.get_dicts()
-              sys.stdout.restore()
-              print "ft_kvm self.cartesian_parser:  ",dir(self.cartesian_parser),"\n\n"
-              print "temp_dicts.next() :  ",self.cartesian_parser.get_dicts().next(),"\n\n"
-              #temp_dic = temp_dicts.next()
-              #for temp_dic in temp_dicts :
-              #  print "temp_dic   :  ",temp_dic,"\n\n"
-              #vm = ft_vm.VM(utils_params.Params(temp_dct).object("vms"))
-              vm = ft_vm.VM(self.cartesian_parser.get_dicts().next()['vms'])
-              #vm = ft_vm.VM('test')
-              #print "before start state",vm.state(),"\n\n"
-              vm.start()
-              #print "after start state",vm.state(),"\n\n"
-              
-            #end add
 
 
         except KeyboardInterrupt:
@@ -803,3 +773,6 @@ class VirtTestApp(object):
 if __name__ == '__main__':
     app = VirtTestApp()
     app.main()
+    #sys.stdout.restore()
+    #print "end\n"
+    sys.exit()

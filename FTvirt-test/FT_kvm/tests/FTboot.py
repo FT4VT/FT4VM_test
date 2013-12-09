@@ -3,6 +3,8 @@ import logging
 import sys
 from autotest.client.shared import error
 from virttest import utils_test
+#sys.path.append("../../virttest")
+#import ft_vm
 
 def run_FTboot(test, params, env):
   """
@@ -21,6 +23,9 @@ def run_FTboot(test, params, env):
   timeout = params["running_timeout"]
   for vm in vms:
     #print "FTboot in \n"
-    result = vm.wait_for_running(int(timeout)
+    result = vm.wait_for_running(int(timeout))
+    time.sleep(2)
+    vm.destroy()
   return result
+
 

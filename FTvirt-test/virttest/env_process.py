@@ -78,9 +78,9 @@ def preprocess_vm(test, params, env, name):
     :param name: The name of the VM object.
     """
     #ting test
-    sys.stdout.restore()
-    print "\n\nenv_process preprocess_vm\n\n"
-    print "name : ",name,"\n\n\n"
+    #sys.stdout.restore()
+    #print "\n\nenv_process preprocess_vm\n\n"
+    #print "name : ",name,"\n\n\n"
     #end test
 
     vm = env.get_vm(name)
@@ -89,8 +89,8 @@ def preprocess_vm(test, params, env, name):
     if not vm:
 
         #ting add
-        sys.stdout.restore()
-        print "can't find VM",name,"\n"
+        #sys.stdout.restore()
+        #print "can't find VM",name,"\n"
         #end add
 
         vm = env.create_vm(vm_type, target, name, params, test.bindir)
@@ -384,8 +384,8 @@ def process(test, params, env, image_func, vm_func, vm_first=False):
     """
     def _call_vm_func():
         #ting test
-        sys.stdout.restore()
-        print "process   params:  ",params.__class__,"\n\n\n"
+        #sys.stdout.restore()
+        #print "process   params:  ",params.__class__,"\n\n\n"
         #end test
         
         for vm_name in params.objects("vms"):

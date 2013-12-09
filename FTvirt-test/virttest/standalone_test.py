@@ -67,9 +67,9 @@ class Test(object):
     def __init__(self, params, options):
         self.params = utils_params.Params(params)
         #ting test
-        sys.stdout.restore()
-        print "Test params class : ",self.params.__class__,"\n\n"
-        print "Test params : ",self.params,"\n\n"
+        #sys.stdout.restore()
+        #print "Test params class : ",self.params.__class__,"\n\n"
+        #print "Test params : ",self.params,"\n\n"
         #end test
 
         self.bindir = data_dir.get_root_dir()
@@ -221,11 +221,6 @@ class Test(object):
                         params = env_process.preprocess(self, params, env)
                     finally:
                         env.save()
-
-                    #ting test
-                    sys.stdout.restore()
-                    print "\n00000000\n\n"
-                    #end test
 
                     # Run the test function
                     for t_type, test_module in test_modules.items():
@@ -788,9 +783,9 @@ def run_tests(parser, options):
 
     logging.debug("Cleaning up previous job tmp files")
     #ting test
-    sys.stdout.restore()
-    print "parser :  ",dir(parser),"\n\n\n"
-    print "parser.get_dicts :      ",dir(parser.get_dicts()),"\n\n\n\n"
+    #sys.stdout.restore()
+    #print "parser :  ",dir(parser),"\n\n\n"
+    #print "parser.get_dicts :      ",dir(parser.get_dicts()),"\n\n\n\n"
     #print "parser.get_dicts next   :    ",parser.get_dicts().next(),"\n\n"
     #end test
     d = parser.get_dicts().next()
@@ -858,8 +853,8 @@ def run_tests(parser, options):
         tag_index = get_tag_index(options, dct)
         shortname = get_tag(dct, tag_index)
         #ting test
-        sys.stdout.restore();
-        print "dct :     ",dct,"\n\n\n"
+        #sys.stdout.restore();
+        #print "dct :     ",dct,"\n\n\n"
         #print "dct[name] :   ",dct['name'],"\n\n\n"
 
         #end test

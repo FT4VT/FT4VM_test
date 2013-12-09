@@ -55,7 +55,8 @@ class VM(virt_vm.BaseVM):
 
     need use thread to do
     """
-    print "start vm name : ",self.name,"\n"
+    #print "start vm name : ",self.name,"\n"
+    #virsh.start(self.name)
     t = threading.Thread(target=self.thread_start, args = ())
     t.start()
     
@@ -70,18 +71,16 @@ class VM(virt_vm.BaseVM):
     #virsh.start(self.name)
     virsh.FTstart(self.name, uri=self.connect_uri)
 
-  def shutdown(self):
+  def destroy(self):
     """
     if primary VM or secondary VM haven't shutoff,
-    shutdown this VM
+    destroy this VM
     """
-    print "shutdown in\n"
-    if not is_dead():
-      print "primary in"
-      visrh.shutdown(self.name)
-    if not is_dead('s'):
-      print self.sec_vm_con_uri
-      virsh.shutdown(self.name, uri=self.sec_vm_con_uri)
+    #print "destroy in\n"
+    if not self.is_dead():
+      virsh.destroy(self.name)
+    if not self.is_dead('s'):
+      virsh.destroy(self.name, uri=self.sec_vm_con_uri)
 
 
   def wait_for_running(self, timeout):
