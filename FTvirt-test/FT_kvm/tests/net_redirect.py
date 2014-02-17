@@ -185,7 +185,6 @@ def run_net_redirect(test, params, env):
     delete_file(temp_file_n)
     delete_file(temp_file1_n)
     time.sleep(2)
-    vm.destroy()
 
 
 #test

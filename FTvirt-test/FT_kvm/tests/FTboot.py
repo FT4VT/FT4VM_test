@@ -19,13 +19,12 @@ def run_FTboot(test, params, env):
   :param params: Dictionary with the test parameters
   :param env: Dictionary with test environment.
   """
+  #time.sleep(20000)
   vms = env.get_all_vms()
   timeout = params["running_timeout"]
   for vm in vms:
-    #print "FTboot in \n"
     result = vm.wait_for_running(int(timeout))
     time.sleep(2)
-    vm.destroy()
   return result
 
 

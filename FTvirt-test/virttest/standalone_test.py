@@ -21,6 +21,10 @@ import arch
 import funcatexit
 import version
 
+#ting add
+import aexpect
+#end add
+
 global GUEST_NAME_LIST
 GUEST_NAME_LIST = None
 global TAG_INDEX
@@ -258,6 +262,11 @@ class Test(object):
                         """
                         if params.get("vm_type") != "FT_kvm":
                             env_process.postprocess(self, params, env)
+                        else:
+                            aexpect.kill_tail_threads()
+                            vms = env.get_all_vms()
+                            for vm in vms:
+                                vm.destroy()
                         #end add
                     except Exception, e:
                         if test_passed:

@@ -82,6 +82,14 @@ class VM(virt_vm.BaseVM):
     if not self.is_dead('s'):
       virsh.destroy(self.name, uri=self.sec_vm_con_uri)
 
+  def screendump(self, filename, debug=False):
+    """
+    screeshot vm console
+
+    not implement
+    """
+    return True
+
 
   def wait_for_running(self, timeout):
     """
@@ -91,11 +99,11 @@ class VM(virt_vm.BaseVM):
     end_time = time.time() + timeout
     time.sleep(30)
     if self.is_alive() and self.is_paused('s'):
-      print "primary state : ",self.state(),"\n"
-      print "secondary state : ",self.state('s'),"\n\n"
+      #print "primary state : ",self.state(),"\n"
+      #print "secondary state : ",self.state('s'),"\n\n"
       while time.time() < end_time:
-        print "primary state : ",self.state(),"\n"
-        print "secondary state : ",self.state('s'),"\n\n"
+        #print "primary state : ",self.state(),"\n"
+        #print "secondary state : ",self.state('s'),"\n\n"
         if self.is_alive() and self.is_alive('s'):
           break
         time.sleep(2)

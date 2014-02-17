@@ -25,6 +25,8 @@ import utils_net
 import utils_disk
 from autotest.client import local_host
 
+import pdb
+
 
 try:
     import PIL.Image
@@ -288,6 +290,9 @@ class _CreateImages(threading.Thread):
     """
 
     def __init__(self, image_func, test, images, params, exit_event):
+        #ting test
+        #pdb.set_trace()
+        #end test
         threading.Thread.__init__(self)
         self.image_func = image_func
         self.test = test
@@ -346,6 +351,10 @@ def _process_images_parallel(image_func, test, params):
     images = params.objects("images")
     no_threads = min(len(images) / 5,
                      2 * local_host.LocalHost().get_num_cpu())
+    #ting test
+    #sys.stdout.restore()
+    #print "process images para in\n"
+    #end test
     exit_event = threading.Event()
     threads = []
     for i in xrange(no_threads):
@@ -915,6 +924,7 @@ def _tcpdump_handler(address_cache, filename, line):
 
 
 def _take_screendumps(test, params, env):
+    pdb.set_trace()
     global _screendump_thread_termination_event
     temp_dir = test.debugdir
     if params.get("screendump_temp_dir"):

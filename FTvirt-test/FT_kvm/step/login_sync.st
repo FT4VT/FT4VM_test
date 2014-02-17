@@ -1,0 +1,9 @@
+//login replay
+wait 4
+key 1
+wait 1
+key 2
+wait 1
+key 3
+wait 1
+key kp_enter

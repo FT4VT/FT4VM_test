@@ -542,6 +542,9 @@ def qemu_monitor_command(name, cmd, **dargs):
     """
 
     cmd_qemu_monitor = "qemu-monitor-command %s --hmp \'%s\'" % (name, cmd)
+    #ting test
+    #print "cmd_qemu_monitor : "+cmd_qemu_monitor+'\n'
+    #end test
     return command(cmd_qemu_monitor, **dargs)
 
 
